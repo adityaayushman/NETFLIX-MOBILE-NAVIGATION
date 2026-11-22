@@ -1,8 +1,8 @@
 # Netflix Mobile Navigation
 
-A layered, animated mobile navigation menu in plain HTML, CSS and JavaScript. No frameworks, no build step.
+**Live demo:** https://adityaayushman.github.io/NETFLIX-MOBILE-NAVIGATION/
 
-**Live demo:** https://netflix-mobile-navigation-lovat.vercel.app
+A layered, animated mobile navigation menu in plain HTML, CSS and JavaScript. No frameworks, no build step.
 
 ## Behaviour
 
