@@ -2,7 +2,7 @@
 
 **Live demo:** https://adityaayushman.github.io/NETFLIX-MOBILE-NAVIGATION/
 
-A layered, animated mobile navigation menu in plain HTML, CSS and JavaScript. No frameworks, no build step.
+A layered, animated mobile navigation menu in plain HTML, CSS and JavaScript, built while following the course. No frameworks, no build step.
 
 ## Behaviour
 
@@ -27,3 +27,7 @@ npx serve .
 ## Notes
 
 This is a UI exercise. It is not affiliated with or endorsed by Netflix, and the logo and brand names belong to their owners.
+
+## Credits
+
+This is an exercise from the [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days) course by Brad Traversy (original: `netflix-mobile-navigation`). The code is unchanged from the original. It is used under the MIT license in `LICENSE`.
