@@ -22,7 +22,7 @@ npx serve .
 |---|---|
 | `index.html` | Markup, with Font Awesome icons loaded from a CDN |
 | `style.css` | Layout and the staggered slide-in transition |
-| `script.js` | Adds or removes the `visible` class on open and close |
+| `script.js` | Opens and closes the menu, and manages focus, `aria-expanded` and the Escape key |
 
 ## Notes
 
@@ -30,4 +30,4 @@ This is a UI exercise. It is not affiliated with or endorsed by Netflix, and the
 
 ## Credits
 
-This is an exercise from the [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days) course by Brad Traversy (original: `netflix-mobile-navigation`). The code is unchanged from the original. It is used under the MIT license in `LICENSE`.
+This is an exercise from the [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days) course by Brad Traversy (original: `netflix-mobile-navigation`). The code started as the original, with accessibility improvements added: button labels, `aria-expanded`, a menu that is inert while closed, focus management, close on Escape, a visible focus outline and reduced-motion support. It is used under the MIT license in `LICENSE`.

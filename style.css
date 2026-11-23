@@ -108,3 +108,21 @@ body {
   list-style-type: none;
   padding-left: 20px;
 }
+
+
+.nav-btn:focus-visible,
+.list li a:focus-visible {
+  outline: 2px solid rgb(229, 9, 20);
+  outline-offset: 2px;
+}
+
+.close-btn:hover,
+.close-btn:focus-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav {
+    transition: none;
+  }
+}
