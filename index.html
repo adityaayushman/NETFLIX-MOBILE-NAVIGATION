@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Tidepool: a mobile app shell with a bottom tab bar and an accessible slide-up menu." />
+  <link rel="stylesheet" href="style.css" />
+  <title>Tidepool</title>
+</head>
+
+<body>
+  <header class="topbar">
+    <h1 class="brand">Tidepool</h1>
+  </header>
+
+  <main class="content">
+    <section id="home" aria-labelledby="home-title">
+      <h2 id="home-title">Home</h2>
+      <p>Your day at a glance. Three things need you today.</p>
+      <ul class="cards">
+        <li class="card"><strong>Morning swim</strong><span>Pool opens at 6:30</span></li>
+        <li class="card"><strong>Tide report</strong><span>High at 11:42, low at 18:05</span></li>
+        <li class="card"><strong>Gear check</strong><span>Two items to pack</span></li>
+      </ul>
+    </section>
+
+    <section id="explore" aria-labelledby="explore-title">
+      <h2 id="explore-title">Explore</h2>
+      <p>Spots nearby, sorted by how calm the water is right now.</p>
+      <ul class="cards">
+        <li class="card"><strong>Cedar Cove</strong><span>Calm, 0.4 km</span></li>
+        <li class="card"><strong>North Jetty</strong><span>Choppy, 1.2 km</span></li>
+      </ul>
+    </section>
+
+    <section id="saved" aria-labelledby="saved-title">
+      <h2 id="saved-title">Saved</h2>
+      <p>Places you marked to come back to.</p>
+      <ul class="cards">
+        <li class="card"><strong>Cedar Cove</strong><span>Saved last week</span></li>
+      </ul>
+    </section>
+
+    <section id="settings" aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings</h2>
+      <p>Units, notifications and appearance live here.</p>
+    </section>
+
+    <section id="help" aria-labelledby="help-title">
+      <h2 id="help-title">Help</h2>
+      <p>Answers to common questions and ways to reach us.</p>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>Tidepool is a demo of a mobile navigation pattern. It is not a real product.</p>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="Primary">
+    <a href="#home" class="tab" aria-current="page">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#explore" class="tab">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+      <span>Explore</span>
+    </a>
+    <a href="#saved" class="tab">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+      <span>Saved</span>
+    </a>
+    <button type="button" class="tab more-btn" id="more-btn" aria-haspopup="dialog" aria-controls="sheet" aria-expanded="false">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      <span>More</span>
+    </button>
+  </nav>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" inert>
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <h2 id="sheet-title">More</h2>
+      <button type="button" class="sheet-close" id="sheet-close" aria-label="Close menu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <ul class="sheet-list">
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#help">Help</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
