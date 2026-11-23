@@ -4,21 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-    crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
   <title>Netflix Mobile Navigation</title>
 </head>
 
 <body>
   <button class="nav-btn open-btn" aria-label="Open menu" aria-controls="menu" aria-expanded="false">
-    <i class="fas fa-bars" aria-hidden="true"></i>
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </button>
 
-  <img
-    src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=684&h=456"
-    alt="Netflix logo" class="logo">
+  <img src="logo.svg" alt="Demo logo" class="logo">
 
   <p class="text">Mobile Navigation</p>
 
@@ -26,23 +21,21 @@
     <div class="nav nav-red">
       <div class="nav nav-white">
         <button class="nav-btn close-btn" aria-label="Close menu">
-          <i class="fas fa-times" aria-hidden="true"></i>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
         </button>
 
-        <img
-          src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=684&h=456"
-          alt="Netflix logo" class="logo">
+        <img src="logo.svg" alt="Demo logo" class="logo">
 
         <ul class="list">
-          <li><a href="#">Teams</a></li>
-          <li><a href="#">Locations</a></li>
-          <li><a href="#">Life at Netflix</a></li>
+          <li><a href="https://jobs.netflix.com/teams" target="_blank" rel="noopener noreferrer">Teams</a></li>
+          <li><a href="https://jobs.netflix.com/locations" target="_blank" rel="noopener noreferrer">Locations</a></li>
+          <li><a href="https://jobs.netflix.com/culture" target="_blank" rel="noopener noreferrer">Life at Netflix</a></li>
           <li>
             <ul>
-              <li><a href="#">Netflix culture memo</a></li>
-              <li><a href="#">Work life balance</a></li>
-              <li><a href="#">Inclusion & diversity</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><a href="https://jobs.netflix.com/culture" target="_blank" rel="noopener noreferrer">Netflix culture memo</a></li>
+              <li><a href="https://jobs.netflix.com/culture" target="_blank" rel="noopener noreferrer">Work life balance</a></li>
+              <li><a href="https://about.netflix.com/en/inclusion" target="_blank" rel="noopener noreferrer">Inclusion &amp; diversity</a></li>
+              <li><a href="https://netflixtechblog.com" target="_blank" rel="noopener noreferrer">Blog</a></li>
             </ul>
           </li>
         </ul>

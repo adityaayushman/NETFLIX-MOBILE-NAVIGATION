@@ -20,9 +20,27 @@ npx serve .
 
 | File | Purpose |
 |---|---|
-| `index.html` | Markup, with Font Awesome icons loaded from a CDN |
+| `index.html` | Markup, with inline SVG icons |
+| `logo.svg` | Neutral placeholder logo |
+| `tests/menu.test.js` | Playwright tests for open, close, Escape and focus handling |
 | `style.css` | Layout and the staggered slide-in transition |
 | `script.js` | Opens and closes the menu, and manages focus, `aria-expanded` and the Escape key |
+
+## Screenshots
+
+| Menu closed | Menu open |
+|---|---|
+| ![Menu closed](docs/mobile-closed.png) | ![Menu open](docs/mobile-open.png) |
+
+## Tests
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+The same tests run in GitHub Actions on every push and pull request.
 
 ## Notes
 

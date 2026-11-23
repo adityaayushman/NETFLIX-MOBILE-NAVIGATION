@@ -1,0 +1,11 @@
+{
+  "name": "netflix-mobile-navigation",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
