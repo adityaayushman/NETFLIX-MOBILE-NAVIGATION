@@ -1,7 +1,7 @@
 {
-  "name": "netflix-mobile-navigation",
+  "name": "tidepool",
   "private": true,
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "test": "node --test"
   },

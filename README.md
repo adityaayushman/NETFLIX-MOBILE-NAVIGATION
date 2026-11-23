@@ -1,36 +1,33 @@
-# Netflix Mobile Navigation
+# Tidepool
+
+A mobile app shell with a bottom tab bar and an accessible slide-up menu, in plain HTML, CSS and JavaScript. No frameworks and no build step.
 
 **Live demo:** https://adityaayushman.github.io/NETFLIX-MOBILE-NAVIGATION/
 
-A layered, animated mobile navigation menu in plain HTML, CSS and JavaScript, built while following the course. No frameworks, no build step.
+| Menu closed | Menu open |
+|---|---|
+| ![Menu closed](docs/closed.png) | ![Menu open](docs/open.png) |
 
-## Behaviour
+## What it does
 
-A menu button opens a full-screen navigation made of three stacked panels (black, red, white) that slide in one after another. A close button slides them away. Best viewed at a phone-sized width.
+- A bottom tab bar with Home, Explore, Saved and a **More** button.
+- **More** opens a bottom sheet with Settings, Help and About. Tap the close button, tap the dimmed backdrop, press Escape or pick a link to close it.
+- Light and dark themes follow the system setting.
+- On wide screens the app stays in a phone-width column.
+
+## Accessibility
+
+- The sheet is a modal dialog: the page behind it is `inert`, Tab wraps inside the sheet, and focus returns to **More** when it closes.
+- **More** reports `aria-expanded`, and the current tab uses `aria-current`.
+- Visible focus outlines, safe-area padding for notched phones and `prefers-reduced-motion` support.
 
 ## Run it
 
-Open `index.html` in any modern browser, or serve the folder with a static server:
+Open `index.html` in a browser, or serve the folder:
 
 ```bash
 npx serve .
 ```
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `index.html` | Markup, with inline SVG icons |
-| `logo.svg` | Neutral placeholder logo |
-| `tests/menu.test.js` | Playwright tests for open, close, Escape and focus handling |
-| `style.css` | Layout and the staggered slide-in transition |
-| `script.js` | Opens and closes the menu, and manages focus, `aria-expanded` and the Escape key |
-
-## Screenshots
-
-| Menu closed | Menu open |
-|---|---|
-| ![Menu closed](docs/mobile-closed.png) | ![Menu open](docs/mobile-open.png) |
 
 ## Tests
 
@@ -40,12 +37,14 @@ npx playwright install chromium
 npm test
 ```
 
-The same tests run in GitHub Actions on every push and pull request.
+The Playwright tests cover opening, closing (button, backdrop, Escape), the focus trap, focus return, link navigation and the current-tab marker. GitHub Actions runs them on every push to `main` and on pull requests.
 
-## Notes
+## Files
 
-This is a UI exercise. It is not affiliated with or endorsed by Netflix, and the logo and brand names belong to their owners.
-
-## Credits
-
-This is an exercise from the [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days) course by Brad Traversy (original: `netflix-mobile-navigation`). The code started as the original, with accessibility improvements added: button labels, `aria-expanded`, a menu that is inert while closed, focus management, close on Escape, a visible focus outline and reduced-motion support. It is used under the MIT license in `LICENSE`.
+| File | Purpose |
+|---|---|
+| `index.html` | Markup and inline SVG icons |
+| `style.css` | Theme tokens, layout, tab bar and sheet transitions |
+| `script.js` | Sheet open and close, focus handling, current tab |
+| `tests/menu.test.js` | Playwright tests |
+| `.github/workflows/test.yml` | CI |

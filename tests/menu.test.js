@@ -21,61 +21,94 @@ async function load() {
 
 const state = () =>
   page.evaluate(() => ({
-    expanded: document.querySelector('.open-btn').getAttribute('aria-expanded'),
-    menuInert: document.querySelector('#menu').inert,
-    pageInert: document.querySelector('.open-btn').inert,
-    active: document.activeElement.className,
+    expanded: document.querySelector('#more-btn').getAttribute('aria-expanded'),
+    sheetInert: document.querySelector('#sheet').inert,
+    contentInert: document.querySelector('.content').inert,
+    activeId: document.activeElement.id,
   }))
 
-test('menu starts closed and unreachable', async () => {
+// The sheet animates for 300ms
+const settle = () => page.waitForTimeout(400)
+
+test('sheet starts closed and unreachable', async () => {
   await load()
   const s = await state()
   assert.strictEqual(s.expanded, 'false')
-  assert.strictEqual(s.menuInert, true)
-  assert.strictEqual(s.pageInert, false)
+  assert.strictEqual(s.sheetInert, true)
+  assert.strictEqual(s.contentInert, false)
   await page.close()
 })
 
-test('open button opens the menu and moves focus inside', async () => {
+test('More opens the sheet and moves focus inside', async () => {
   await load()
-  await page.click('.open-btn')
+  await page.click('#more-btn')
   const s = await state()
   assert.strictEqual(s.expanded, 'true')
-  assert.strictEqual(s.menuInert, false)
-  assert.strictEqual(s.pageInert, true)
-  assert.match(s.active, /close-btn/)
+  assert.strictEqual(s.sheetInert, false)
+  assert.strictEqual(s.contentInert, true)
+  assert.strictEqual(s.activeId, 'sheet-close')
   await page.close()
 })
 
-test('close button closes the menu and returns focus', async () => {
+test('close button closes the sheet and returns focus', async () => {
   await load()
-  await page.click('.open-btn')
-  await page.click('.close-btn')
+  await page.click('#more-btn')
+  await settle()
+  await page.click('#sheet-close')
   const s = await state()
   assert.strictEqual(s.expanded, 'false')
-  assert.strictEqual(s.menuInert, true)
-  assert.match(s.active, /open-btn/)
+  assert.strictEqual(s.sheetInert, true)
+  assert.strictEqual(s.activeId, 'more-btn')
   await page.close()
 })
 
-test('Escape closes the menu', async () => {
+test('Escape closes the sheet', async () => {
   await load()
-  await page.click('.open-btn')
+  await page.click('#more-btn')
   await page.keyboard.press('Escape')
   const s = await state()
   assert.strictEqual(s.expanded, 'false')
-  assert.strictEqual(s.menuInert, true)
-  assert.match(s.active, /open-btn/)
+  assert.strictEqual(s.activeId, 'more-btn')
   await page.close()
 })
 
-test('Tab stays inside the open menu', async () => {
+test('tapping the backdrop closes the sheet', async () => {
   await load()
-  await page.click('.open-btn')
-  for (let i = 0; i < 12; i++) {
+  await page.click('#more-btn')
+  await settle()
+  await page.mouse.click(187, 40)
+  const s = await state()
+  assert.strictEqual(s.expanded, 'false')
+  await page.close()
+})
+
+test('Tab stays inside the open sheet', async () => {
+  await load()
+  await page.click('#more-btn')
+  for (let i = 0; i < 10; i++) {
     await page.keyboard.press('Tab')
-    const inside = await page.evaluate(() => !!document.activeElement.closest('#menu'))
-    assert.ok(inside, `focus escaped the menu on Tab ${i + 1}`)
+    const inside = await page.evaluate(() => !!document.activeElement.closest('#sheet'))
+    assert.ok(inside, `focus escaped the sheet on Tab ${i + 1}`)
   }
+  await page.close()
+})
+
+test('choosing a sheet link closes the sheet and navigates', async () => {
+  await load()
+  await page.click('#more-btn')
+  await settle()
+  await page.click('#sheet a[href="#help"]')
+  const s = await state()
+  assert.strictEqual(s.expanded, 'false')
+  assert.strictEqual(await page.evaluate(() => location.hash), '#help')
+  await page.close()
+})
+
+test('tab bar marks the current tab', async () => {
+  await load()
+  await page.click('.tab[href="#explore"]')
+  const current = await page.evaluate(() =>
+    [...document.querySelectorAll('.tab[aria-current="page"]')].map(t => t.getAttribute('href')))
+  assert.deepStrictEqual(current, ['#explore'])
   await page.close()
 })
